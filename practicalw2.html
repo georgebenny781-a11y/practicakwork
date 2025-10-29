@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card mx-auto" style="max-width: 600px;">
+            <div class="card-body">
+                <h4 class="text-center">BLOOM COLLEGE</h4>
+                <p class="text-center">Student Registration Form</p>
+                
+                <form id="regForm">
+                    <div class="mb-3">
+                        <label>Student Name:</label>
+                        <input type="text" class="form-control" id="studentName">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Father's Name:</label>
+                        <input type="text" class="form-control" id="fatherName">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Mother's Name:</label>
+                        <input type="text" class="form-control" id="motherName">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Gender:</label><br>
+                        <input type="radio" name="gender" value="Male"> Male
+                        <input type="radio" name="gender" value="Female"> Female
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>E-Mail:</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Department:</label>
+                        <select class="form-select">
+                            <option>Computer Engineering</option>
+                            <option>Electrical Engineering</option>
+                        </select>
+                    </div>
+                    
+                    <h5 class="text-center mt-4">Address</h5>
+                    
+                    <div class="mb-3">
+                        <label>Street:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>City:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-secondary">Register</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Your details have been saved!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // i. onBlur
+        document.getElementById('studentName').onblur = function() {
+            alert('Student name field left');
+        };
+
+        // ii. onFocus for email
+        document.getElementById('email').onfocus = function() {
+            this.style.backgroundColor = 'yellow';
+        };
+
+        // iii. onChange to caps
+        document.getElementById('studentName').onchange = function() {
+            this.value = this.value.toUpperCase();
+        };
+        
+        document.getElementById('fatherName').onchange = function() {
+            this.value = this.value.toUpperCase();
+        };
+        
+        document.getElementById('motherName').onchange = function() {
+            this.value = this.value.toUpperCase();
+        };
+
+        // iv. Submit with modal
+        document.getElementById('regForm').onsubmit = function(e) {
+            e.preventDefault();
+            var modal = new bootstrap.Modal(document.getElementById('successModal'));
+            modal.show();
+        };
+    </script>
+</body>
+</html>
